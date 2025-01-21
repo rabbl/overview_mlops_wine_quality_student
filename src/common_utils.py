@@ -3,11 +3,10 @@ from box.exceptions import BoxValueError
 import yaml
 from custom_logger import logger
 import json
-import joblib
 from ensure import ensure_annotations
 from box import ConfigBox
 from pathlib import Path
-from typing import Any
+
 
 @ensure_annotations
 def read_yaml(path_to_yaml: Path) -> ConfigBox:
@@ -32,7 +31,7 @@ def read_yaml(path_to_yaml: Path) -> ConfigBox:
         raise ValueError("yaml file is empty")
     except Exception as e:
         raise e
-    
+
 
 @ensure_annotations
 def create_directories(path_to_directories: list, verbose=True):
@@ -77,6 +76,3 @@ def load_json(path: Path) -> ConfigBox:
 
     logger.info(f"json file loaded succesfully from: {path}")
     return ConfigBox(content)
-
-
-
